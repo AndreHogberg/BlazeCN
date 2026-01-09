@@ -70,7 +70,7 @@ public class StyleConfig<TComponent>
             }
         }
         
-        sb.Append(userClasses ?? "");
+        sb.Append(' ').Append(userClasses ?? "");
         
         return Styles.Cn(sb.ToString()); 
     }
