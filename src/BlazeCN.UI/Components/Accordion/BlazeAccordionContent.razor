@@ -1,0 +1,25 @@
+@namespace BlazeCN.UI
+
+<AccordionContent
+    data-slot="accordion-content"
+    class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+    @attributes="OtherAttributes"
+    ForceMount="true">
+    <div class="@InnerClassNames">
+        @ChildContent
+    </div>
+</AccordionContent>
+
+@code {
+    [Parameter(CaptureUnmatchedValues = true)] public IDictionary<string, object>? AdditionalAttributes { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    private string? UserClass => AdditionalAttributes.ExtractClass();
+    
+    private IEnumerable<KeyValuePair<string, object>> OtherAttributes => 
+        AdditionalAttributes?.Where(x => x.Key != "class") ?? Enumerable.Empty<KeyValuePair<string, object>>();
+
+    private string InnerClassNames => Styles.Cn("pt-0 pb-4", UserClass ?? "");
+    
+    
+}

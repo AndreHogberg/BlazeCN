@@ -1,0 +1,11 @@
+﻿@namespace BlazeCN.UI
+
+
+@if (_hasHref)
+{
+    <NavLink class="@ClassNames" @attributes="AddtionalAttributes">@ChildContent</NavLink>
+}
+else
+{
+    <button class="@ClassNames" @attributes="AddtionalAttributes">@ChildContent</button>
+}

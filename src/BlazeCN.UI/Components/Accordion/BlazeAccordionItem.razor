@@ -1,0 +1,19 @@
+@namespace BlazeCN.UI
+
+<AccordionItem
+    data-slot="accordion-item"
+    class="@ClassNames"
+    @attributes="AdditionalAttributes"
+    Value="@Value"
+    Disabled="@Disabled">
+    @ChildContent
+</AccordionItem>
+
+@code {
+    [Parameter(CaptureUnmatchedValues = true)] public IDictionary<string, object>? AdditionalAttributes { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public string Value { get; set; } = default!;
+    [Parameter] public bool Disabled { get; set; }
+
+    private string ClassNames => Styles.Cn("border-b last:border-b-0", AdditionalAttributes.ExtractClass() ?? "");
+}

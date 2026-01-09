@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/BlazeCN.Playground/BlazeCN.Playground.csproj" />
+    <Project Path="src/BlazeCN.UI/BlazeCN.UI.csproj" />
+  </Folder>
+</Solution>

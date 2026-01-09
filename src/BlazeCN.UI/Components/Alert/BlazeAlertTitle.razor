@@ -1,0 +1,16 @@
+@namespace BlazeCN.UI
+@using BlazeCN.UI.Lib
+
+<div data-slot="alert-title" class="@ClassNames" @attributes="AdditionalAttributes">
+    @RenderChildContent
+</div>
+
+@code {
+    [Parameter(CaptureUnmatchedValues = true)] public IDictionary<string, object>? AdditionalAttributes { get; set; }
+    [Parameter] public RenderFragment? RenderChildContent { get; set; }
+
+    private string ClassNames => Styles.Cn(
+        "col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight",
+        AdditionalAttributes?.TryGetValue("class", out var c) == true ? c as string : null
+    );
+}
